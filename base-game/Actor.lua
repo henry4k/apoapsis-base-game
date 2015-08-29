@@ -31,13 +31,11 @@ function Actor:initialize( renderTarget )
     WorldObject.initialize(self)
     self:initializeControllable()
 
-    Control.pushControllable(self)
-
     self.cameraManifold = CameraManifold(renderTarget)
     self.cameraManifold:setFieldOfView(DefaultFoV)
 
     self.egoCameraController = EgoCameraController()
-    Control.pushControllable(self.egoCameraController)
+    self:setChildControllables({self.egoCameraController})
     local function onOrientationUpdated( self, orientation )
         local transformation = orientation:toMatrix():scale(Vec(1,1,-1))
         -- Invert Z axis to remain in right-handed system.
@@ -49,8 +47,6 @@ function Actor:initialize( renderTarget )
 end
 
 function Actor:destroy()
-    Control.popControllable(self.egoCameraController)
-    Control.popControllable(self)
     self.cameraManifold:destroy()
     self:destroyControllable()
     WorldObject.destroy(self)

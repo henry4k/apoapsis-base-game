@@ -16,7 +16,7 @@ local PhysicalActor = class('base-game/PhysicalActor', Actor)
 
 
 function PhysicalActor:initialize( ... )
-    Actor.initialize(self)
+    Actor.initialize(self, ...)
 
     local collisionShape = CapsuleCollisionShape(0.5, 2)
     self.solid = Solid(1, Vec(0,0,0), Quat(), collisionShape)
@@ -112,3 +112,6 @@ end)
 --        self.solid:applyImpulse(Vec(0,1,0)*0.5, nil, true)
 --    end
 --end)
+
+
+return PhysicalActor

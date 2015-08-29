@@ -1,0 +1,8 @@
+include_rules
+
+: foreach *.blend |> !blender |> %B.json
+
+: EarthDiffuse.xcf |> !xcf2png |> EarthDiffuse.png
+: EarthSpecular.xcf |> !xcf2png |> EarthSpecular.png
+: EarthHeight.xcf |> !normalmap |> EarthNormal.png
+: EarthCloudDiffuse.png |> !normalmap |> EarthCloudNormal.png
