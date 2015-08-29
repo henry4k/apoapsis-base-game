@@ -1,0 +1,3 @@
+CONFIG_BLENDER=blender
+#CONFIG_GIMP=gimp
+CONFIG_XCF2PNG=xcf2png

@@ -1,0 +1,9 @@
+/.tup
+/tup.config
+*.pyc
+.DS_Store
+.DS_Store?
+Thumbs.db
+*~
+.directory
+*.blend?
