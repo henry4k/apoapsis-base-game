@@ -15,15 +15,14 @@ local Actor                 = require 'base-game/Actor'
 local PhysicalActor = class('base-game/PhysicalActor', Actor)
 
 
-function PhysicalActor:initialize( ... )
-    Actor.initialize(self, ...)
+function PhysicalActor:initialize( renderTarget, solid )
+    Actor.initialize(self, renderTarget)
 
-    local collisionShape = CapsuleCollisionShape(0.5, 2)
-    self.solid = Solid(1, Vec(0,0,0), Quat(), collisionShape)
+    self.solid = solid
     self.relativeForceValue = Vec(0,0,0)
     self.relativeForce = nil
 
-    self.cameraManifold:setAttachmentTarget(self.solid)
+    self.cameraManifold:setAttachmentTarget(solid)
 end
 
 function PhysicalActor:destroy()
