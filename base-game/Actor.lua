@@ -6,9 +6,8 @@
 -- Includes @{core.Controllable}.
 
 
-local class  = require 'middleclass'
-local Vec    = require 'core/Vector'
-local Control             = require 'core/Control'
+local class = require 'middleclass'
+local Vec   = require 'core/Vector'
 local Controllable        = require 'core/Controllable'
 local WorldObject         = require 'core/world/WorldObject'
 local CameraManifold      = require 'core/graphics/CameraManifold'
@@ -36,20 +35,21 @@ function Actor:initialize( renderTarget )
 
     self.egoCameraController = EgoCameraController()
     self:setChildControllables({self.egoCameraController})
-    local function onOrientationUpdated( self, orientation )
-        local transformation = orientation:toMatrix():scale(Vec(1,1,-1))
-        -- Invert Z axis to remain in right-handed system.
-        self.cameraManifold:setViewTransformation(transformation)
-    end
-    self.egoCameraController:addEventTarget('orientation-updated', self, onOrientationUpdated)
+    self.egoCameraController:addEventTarget('orientation-updated', self, self.orientationUpdated)
 
-    onOrientationUpdated(self, self.egoCameraController:getOrientation())
+    self:orientationUpdated(self.egoCameraController:getOrientation())
 end
 
 function Actor:destroy()
     self.cameraManifold:destroy()
     self:destroyControllable()
     WorldObject.destroy(self)
+end
+
+function Actor:orientationUpdated( orientation )
+    local transformation = orientation:toMatrix():scale(Vec(1,1,-1))
+    -- Invert Z axis to remain in right-handed system.
+    self.cameraManifold:setViewTransformation(transformation)
 end
 
 --- While pressed, the field of view set to a smaller value.
