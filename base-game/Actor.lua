@@ -11,7 +11,7 @@ local Vec   = require 'core/Vector'
 local Controllable        = require 'core/Controllable'
 local WorldObject         = require 'core/world/WorldObject'
 local CameraManifold      = require 'core/graphics/CameraManifold'
-local EgoCameraController = require 'core/EgoCameraController'
+local EgoCameraController = require 'base-game/EgoCameraController'
 
 
 local DefaultFoV = math.rad(80)

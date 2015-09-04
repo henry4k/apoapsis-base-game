@@ -1,4 +1,4 @@
---- @classmod core.EgoCameraController
+--- @classmod base-game.EgoCameraController
 --- @{core.Controllable}, which rotates a camera around its origin.
 --
 -- Just like in most ego shooters this is done by using axis controls, e.g.
@@ -21,7 +21,7 @@ local sign         = math.sign
 local turn = math.pi * 2
 
 
-local EgoCameraController = class('core/EgoCameraController')
+local EgoCameraController = class('base-game/EgoCameraController')
 EgoCameraController:include(Controllable)
 EgoCameraController:include(EventSource)
 
