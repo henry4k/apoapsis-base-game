@@ -30,7 +30,7 @@ function GhostActor:destroy()
 end
 
 function GhostActor:_updateMovementForce()
-    local orientation = self.egoCameraController:getOrientation():normalize()
+    local orientation = self.egoCameraController:getOrientation()
     local absoluteMovementDirection =
         Quat:multiplyVector(orientation, self.relativeMovementDirection)
     local forceValue = absoluteMovementDirection * 100
@@ -78,7 +78,7 @@ end)
 -- @control left
 GhostActor:mapControl('left', function( self, absolute, delta )
     if delta > 0 then
-        self.relativeMovementDirection[1] = -1
+        self.relativeMovementDirection[1] = 1
     else
         self.relativeMovementDirection[1] = 0
     end
@@ -88,7 +88,7 @@ end)
 -- @control right
 GhostActor:mapControl('right', function( self, absolute, delta )
     if delta > 0 then
-        self.relativeMovementDirection[1] = 1
+        self.relativeMovementDirection[1] = -1
     else
         self.relativeMovementDirection[1] = 0
     end

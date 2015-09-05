@@ -8,6 +8,8 @@
 
 local class = require 'middleclass'
 local Vec   = require 'core/Vector'
+local Mat4  = require 'core/Matrix4'
+local Quat  = require 'core/Quaternion'
 local Controllable        = require 'core/Controllable'
 local WorldObject         = require 'core/world/WorldObject'
 local CameraManifold      = require 'core/graphics/CameraManifold'
@@ -46,8 +48,14 @@ function Actor:destroy()
     WorldObject.destroy(self)
 end
 
+local center  = Vec(0,0,0)
+local forward = Vec(0,0,1)
+local up      = Vec(0,1,0)
+
 function Actor:orientationUpdated( orientation )
-    local transformation = orientation:toMatrix():scale(Vec(1,1,-1))
+    local transformation = Mat4:lookAt(center,
+                                       Quat:multiplyVector(orientation, forward),
+                                       Quat:multiplyVector(orientation, up))
     -- Invert Z axis to remain in right-handed system.
     self.cameraManifold:setViewTransformation(transformation)
 end
