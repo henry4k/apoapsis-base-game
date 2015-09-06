@@ -1,6 +1,6 @@
---- @classmod base-game.GhostActor
+--- @classmod base-game.world.GhostActor
 --
--- Extends @{base-game.PhysicalActor}.
+-- Extends @{base-game.world.PhysicalActor}.
 
 
 local class  = require 'middleclass'
@@ -11,7 +11,7 @@ local Solid               = require 'core/physics/Solid'
 local PhysicalActor       = require 'base-game/PhysicalActor'
 
 
-local GhostActor = class('base-game/GhostActor', PhysicalActor)
+local GhostActor = class('base-game/world/GhostActor', PhysicalActor)
 
 
 function GhostActor:initialize( renderTarget )

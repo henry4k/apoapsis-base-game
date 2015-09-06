@@ -1,7 +1,7 @@
---- @classmod base-game.HumanoidActor
+--- @classmod base-game.world.HumanoidActor
 --- Base class for humanoid actors.
 --
--- Extends @{base-game.PhysicalActor}.
+-- Extends @{base-game.world.PhysicalActor}.
 
 
 local class  = require 'middleclass'
@@ -9,10 +9,10 @@ local Vec    = require 'core/Vector'
 local Quat   = require 'core/Quaternion'
 local CapsuleCollisionShape = require 'core/physics/CapsuleCollisionShape'
 local Solid                 = require 'core/physics/Solid'
-local PhysicalActor         = require 'base-game/PhysicalActor'
+local PhysicalActor         = require 'base-game/world/PhysicalActor'
 
 
-local HumanoidActor = class('base-game/HumanoidActor', PhysicalActor)
+local HumanoidActor = class('base-game/world/HumanoidActor', PhysicalActor)
 
 
 function HumanoidActor:initialize( renderTarget )

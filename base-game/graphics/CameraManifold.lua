@@ -1,4 +1,4 @@
---- @classmod core.graphics.CameraManifold
+--- @classmod base-game.graphics.CameraManifold
 --- Controls multiple cameras simultaneously.
 --
 -- *This is still under construction and will probably change in the future.*
@@ -11,7 +11,7 @@ local RenderTarget = require 'core/graphics/RenderTarget'
 local PerspectiveCamera = require 'core/graphics/PerspectiveCamera'
 
 
-local CameraManifold = class('core/graphics/CameraManifold', RenderTarget)
+local CameraManifold = class('base-game/graphics/CameraManifold', RenderTarget)
 
 ---
 -- @param renderTarget

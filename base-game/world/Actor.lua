@@ -1,4 +1,4 @@
---- @classmod base-game.Actor
+--- @classmod base-game.world.Actor
 --- Things that the player can take control of.
 --
 -- Extends @{core.world.WorldObject}.
@@ -20,7 +20,7 @@ local DefaultFoV = math.rad(80)
 local ZoomedFoV  = math.rad(10)
 
 
-local Actor = class('base-game/Actor', WorldObject)
+local Actor = class('base-game/world/Actor', WorldObject)
 Actor:include(Controllable)
 
 

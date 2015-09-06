@@ -1,4 +1,3 @@
---local Vec               = require 'core/Vector'
 local VoxelVolume       = require 'core/voxel/VoxelVolume'
 local ChunkManager      = require 'core/voxel/ChunkManager'
 local GlobalEventSource = require 'core/GlobalEventSource'
@@ -34,7 +33,7 @@ function SetupUtils.setupRenderTarget( renderTarget )
     local worldCamera      = PerspectiveCamera(worldModelWorld)
     local backgroundCamera = PerspectiveCamera(backgroundModelWorld)
 
-    local defaultRT = require 'core/graphics/DefaultRenderTarget':get()
+    local defaultRT = require 'core/graphics/DefaultRenderTarget'
     defaultRT:setCamera(0, 'foreground', foregroundCamera)
     defaultRT:setCamera(2,      'world',      worldCamera)
     defaultRT:setCamera(1, 'background', backgroundCamera)
