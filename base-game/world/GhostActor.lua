@@ -8,7 +8,7 @@ local Vec    = require 'core/Vector'
 local Quat   = require 'core/Quaternion'
 local EmptyCollisionShape = require 'core/physics/EmptyCollisionShape'
 local Solid               = require 'core/physics/Solid'
-local PhysicalActor       = require 'base-game/PhysicalActor'
+local PhysicalActor       = require 'base-game/world/PhysicalActor'
 
 
 local GhostActor = class('base-game/world/GhostActor', PhysicalActor)
