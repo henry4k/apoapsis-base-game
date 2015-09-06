@@ -12,7 +12,7 @@ local Mat4  = require 'core/Matrix4'
 local Quat  = require 'core/Quaternion'
 local Controllable        = require 'core/Controllable'
 local WorldObject         = require 'core/world/WorldObject'
-local CameraManifold      = require 'core/graphics/CameraManifold'
+local CameraManifold      = require 'base-game/graphics/CameraManifold'
 local EgoCameraController = require 'base-game/EgoCameraController'
 
 
