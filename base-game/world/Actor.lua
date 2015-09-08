@@ -37,9 +37,9 @@ function Actor:initialize( renderTarget )
 
     self.egoCameraController = EgoCameraController()
     self:setChildControllables({self.egoCameraController})
-    self.egoCameraController:addEventTarget('orientation-updated', self, self.orientationUpdated)
+    self.egoCameraController:addEventTarget('orientation-updated', self, self._orientationUpdated)
 
-    self:orientationUpdated(self.egoCameraController:getOrientation())
+    self:_orientationUpdated(self.egoCameraController:getOrientation())
 end
 
 function Actor:destroy()
@@ -52,7 +52,7 @@ local center  = Vec(0,0,0)
 local forward = Vec(0,0,1)
 local up      = Vec(0,1,0)
 
-function Actor:orientationUpdated( orientation )
+function Actor:_orientationUpdated( orientation )
     local transformation = Mat4:lookAt(center,
                                        Quat:multiplyVector(orientation, forward),
                                        Quat:multiplyVector(orientation, up))
