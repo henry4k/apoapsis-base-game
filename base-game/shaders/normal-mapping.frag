@@ -16,3 +16,13 @@ vec3 CalcLightColor( vec3 normalTexel )
     float lightIntensity = max(dot(normal, LightDirection), 0.0);
     return LightDiffuseColor * lightIntensity;
 }
+
+vec3 CalcLightColorFromDUDV( vec2 dudv )
+{
+    dudv = dudv * 2.0 - 1.0;
+    float z = sqrt(1.0 - dudv.x*dudv.x - dudv.y*dudv.y);
+    vec3 normal = normalize(vec3(dudv, z) * TBN);
+
+    float lightIntensity = max(dot(normal, LightDirection), 0.0);
+    return LightDiffuseColor * lightIntensity;
+}

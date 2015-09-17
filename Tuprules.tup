@@ -24,6 +24,12 @@ NORMAL_MAP_SCRIPT = $(TUP_CWD)/tools/ExportNormalMap.sh
 !normalmap = |> ^o Exporting normal map %f^ "$(NORMAL_MAP_SCRIPT)" @(GIMP) %f %o |>
 
 
+# -- planet surface
+
+PLANET_SURFACE_SCRIPT = $(TUP_CWD)/tools/GeneratePlanetSurface.py
+!planetsurface = |> ^o Generating planet surface %f^ PYTHONDONTWRITEBYTECODE=1 "$(PLANET_SURFACE_SCRIPT)" %f %o |>
+
+
 # -- blender --
 
 ifdef BLENDER

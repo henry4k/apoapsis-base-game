@@ -12,6 +12,7 @@ Needed to export models and graphics:
 
 - blender
 - xcf2png or gimp
+- [OpenImageIO](http://openimageio.org) and its Python bindings
 
 And obviously you need the Apoapsis executable and the core package.
 

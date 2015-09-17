@@ -8,7 +8,7 @@ local DefaultShaderProgramSet = require 'base-game/shaders/DefaultShaderProgramS
 
 local SetupUtils = {}
 
-function SetupUtils.setupVoxelVolume()
+function SetupUtils.setupVoxelVolume( size )
     local voxelVolume = VoxelVolume(size)
     GlobalEventSource:addEventTarget('shutdown', voxelVolume, function()
         voxelVolume:destroy()
@@ -16,8 +16,8 @@ function SetupUtils.setupVoxelVolume()
     return voxelVolume
 end
 
-function SetupUtils.setupChunkManager()
-    local chunkManager = ChunkManager(voxelVolume, worldModelWorld)
+function SetupUtils.setupChunkManager( voxelVolume, modelWorld )
+    local chunkManager = ChunkManager(voxelVolume, modelWorld)
     GlobalEventSource:addEventTarget('shutdown', chunkManager, function()
         chunkManager:destroy()
     end)
