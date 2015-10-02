@@ -1,6 +1,6 @@
 include_rules
 
-: foreach *.blend |> !blender |> %B.json
+: foreach *.blend |> blend2json %f %o |> %B.json
 
-: Height.png |> !normalmap |> NormalMap.png
-: Height.png Climate.png NormalMap.png |> !planetsurface |> Surface.png
+: BumpMap.png |> gen-normalmap %f %o |> NormalMap.png
+: Height.png Climate.png NormalMap.png |> gen-planet-surface %f %o |> Surface.png

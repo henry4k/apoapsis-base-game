@@ -8,11 +8,7 @@ This package contains assets and scripts, which provide the basic game content.
 
 ## Dependencies
 
-Needed to export models and graphics:
-
-- blender
-- xcf2png or gimp
-- [OpenImageIO](http://openimageio.org) and its Python bindings
+- [apoapsis-build-tools](https://github.com/henry4k/apoapsis-build-tools)
 
 And obviously you need the Apoapsis executable and the core package.
 
