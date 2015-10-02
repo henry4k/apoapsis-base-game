@@ -1,28 +1,21 @@
 #version 120
 
-varying mat3 TBN;
+varying vec3 LightDirectionTS;
+varying vec3 HalfWayDirectionTS;
+varying vec3 CameraDirectionTS;
 
-const vec3 LightDirection = vec3(0, 0, 1);
 const vec3 LightDiffuseColor = vec3(1, 1, 1);
 
-vec3 DecodeNormalTexel( const in vec3 n )
+vec3 UnpackDUDVNormal( vec2 dudv )
 {
-    return normalize( normalize(n * 2.0 - 1.0) * TBN );
-}
-
-vec3 CalcLightColor( vec3 normalTexel )
-{
-    vec3 normal = DecodeNormalTexel(normalTexel);
-    float lightIntensity = max(dot(normal, LightDirection), 0.0);
-    return LightDiffuseColor * lightIntensity;
+    dudv = dudv * 2.0 - 1.0;
+    float z = sqrt(1.0 - dudv.x*dudv.x - dudv.y*dudv.y);
+    return vec3(dudv, z);
 }
 
 vec3 CalcLightColorFromDUDV( vec2 dudv )
 {
-    dudv = dudv * 2.0 - 1.0;
-    float z = sqrt(1.0 - dudv.x*dudv.x - dudv.y*dudv.y);
-    vec3 normal = normalize(vec3(dudv, z) * TBN);
-
-    float lightIntensity = max(dot(normal, LightDirection), 0.0);
-    return LightDiffuseColor * lightIntensity;
+    vec3 normal = UnpackDUDVNormal(dudv);
+    float lamberFactor = max(dot(LightDirectionTS, normal), 0.0);
+    return LightDiffuseColor * lamberFactor;
 }

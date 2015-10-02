@@ -12,14 +12,8 @@ local planetShaderProgram = ShaderProgram:load('base-game/shaders/normal-mapping
                                                'base-game/shaders/Planet.vert',
                                                'base-game/shaders/Planet.frag')
 
-local planetCloudsShaderProgram = ShaderProgram:load('base-game/shaders/normal-mapping.vert',
-                                                     'base-game/shaders/normal-mapping.frag',
-                                                     'base-game/shaders/Planet.vert',
-                                                     'base-game/shaders/clouds.frag')
-
 local DefaultShaderProgramSet = ShaderProgramSet(defaultShaderProgram)
 DefaultShaderProgramSet:setFamily('skybox', skyboxShaderProgram)
 DefaultShaderProgramSet:setFamily('planet', planetShaderProgram)
-DefaultShaderProgramSet:setFamily('planet-clouds', planetCloudsShaderProgram)
 
 return DefaultShaderProgramSet

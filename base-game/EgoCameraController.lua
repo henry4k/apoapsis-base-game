@@ -87,7 +87,7 @@ function EgoCameraController:_rotate( offset )
 
     self.rotation = rotation
 
-    local aroundY = Quat:byAngleAndAxis(-rotation[2], 0,1,0)
+    local aroundY = Quat:byAngleAndAxis(rotation[2], 0,1,0)
 
     local xAxis = Quat:multiplyVector(aroundY, Vec(1,0,0))
     local aroundX = Quat:byAngleAndAxis(rotation[1], xAxis)

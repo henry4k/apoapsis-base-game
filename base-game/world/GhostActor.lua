@@ -78,8 +78,8 @@ GhostActor:mapControl('backward', function( self, absolute, delta )
     self:_updateMovementForce()
 end)
 
--- @control left
-GhostActor:mapControl('left', function( self, absolute, delta )
+-- @control right
+GhostActor:mapControl('right', function( self, absolute, delta )
     if delta > 0 then
         self.relativeMovementDirection[1] = 1
     else
@@ -88,8 +88,8 @@ GhostActor:mapControl('left', function( self, absolute, delta )
     self:_updateMovementForce()
 end)
 
--- @control right
-GhostActor:mapControl('right', function( self, absolute, delta )
+-- @control left
+GhostActor:mapControl('left', function( self, absolute, delta )
     if delta > 0 then
         self.relativeMovementDirection[1] = -1
     else

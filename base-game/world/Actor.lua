@@ -17,7 +17,7 @@ local EgoCameraController = require 'base-game/EgoCameraController'
 
 
 local DefaultFoV = math.rad(80)
-local ZoomedFoV  = math.rad(10)
+local ZoomedFoV  = math.rad(40)
 
 
 local Actor = class('base-game/world/Actor', WorldObject)
@@ -56,7 +56,6 @@ function Actor:_orientationUpdated( orientation )
     local transformation = Mat4:lookAt(center,
                                        Quat:multiplyVector(orientation, forward),
                                        Quat:multiplyVector(orientation, up))
-    -- Invert Z axis to remain in right-handed system.
     self.cameraManifold:setViewTransformation(transformation)
 end
 
