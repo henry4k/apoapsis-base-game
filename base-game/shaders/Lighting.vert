@@ -14,7 +14,7 @@ varying vec3 CameraDirectionTS;
 
 const vec3 LightDirectionWS = -normalize(vec3(-1, -1, 0));
 
-void CalcTBNMatrix()
+void CalcLight()
 {
     mat3 viewRotation      = mat3(View);
     mat3 modelViewRotation = mat3(ModelView);

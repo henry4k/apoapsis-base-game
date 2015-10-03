@@ -1,5 +1,5 @@
 #version 120
-void CalcTBNMatrix(); // from normal-mapping.vert
+void CalcLight(); // from Lighting.vert
 
 uniform mat4 ModelViewProjection;
 
@@ -12,5 +12,5 @@ void main()
 {
     gl_Position = ModelViewProjection * vec4(VertexPosition, 1.0);
     TexCoord    = VertexTexCoord;
-    CalcTBNMatrix();
+    CalcLight();
 }
