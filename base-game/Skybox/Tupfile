@@ -1,3 +1,0 @@
-include_rules
-
-: foreach *.blend |> blend2json %f %o |> %B.json
