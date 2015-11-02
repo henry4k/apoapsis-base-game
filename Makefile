@@ -20,7 +20,7 @@ GENERATED_CONTENTS += Planet/CloudNormalMap.png
 Planet/CloudNormalMap.png: Planet/CloudDensity.png
 	$(BUILD_TOOLS)/gen-normalmap $< $@
 
-GENERATED_CONTENTS += Planet/CloudDensity.png
+GENERATED_CONTENTS += Planet/Clouds.png
 Planet/Clouds.png: Planet/CloudDensity.png Planet/CloudNormalMap.png
 	$(BUILD_TOOLS)/gen-normalmap $^ $@
 
