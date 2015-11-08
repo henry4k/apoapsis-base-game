@@ -13,9 +13,9 @@ local planetProgram = ShaderProgram:load('base-game/shaders/Lighting.vert',
                                                'base-game/shaders/Planet.frag')
 
 local planetAtmosphereProgram = ShaderProgram:load('base-game/shaders/Lighting.vert',
-                                                     'base-game/shaders/Lighting.frag',
-                                                     'base-game/shaders/PlanetAtmosphere.vert',
-                                                     'base-game/shaders/PlanetAtmosphere.frag')
+                                                   'base-game/shaders/Lighting.frag',
+                                                   'base-game/shaders/PlanetAtmosphere.vert',
+                                                   'base-game/shaders/PlanetAtmosphere.frag')
 
 local DefaultShaderProgramSet = ShaderProgramSet(defaultProgram)
 DefaultShaderProgramSet:setFamily('skybox', skyboxProgram)
