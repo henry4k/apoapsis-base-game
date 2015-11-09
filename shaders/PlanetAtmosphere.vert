@@ -10,12 +10,10 @@ attribute vec2 VertexTexCoord;
 
 varying vec2 TexCoord;
 varying vec3 NormalWS;
-varying vec3 LightDirectionCS;
-varying vec3 CameraDirectionCS;
-varying vec3 OuterPositionCS;
-varying vec3 InnerPositionCS;
-
-const vec3 LightDirectionWS = -normalize(vec3(-1, 0, 0));
+//varying vec3 LightDirectionCS;
+//varying vec3 CameraDirectionCS;
+//varying vec3 OuterPositionCS;
+//varying vec3 InnerPositionCS;
 
 void main()
 {
@@ -24,11 +22,11 @@ void main()
     gl_Position = ModelViewProjection * vec4(VertexPosition*1.01, 1.0);
     TexCoord    = VertexTexCoord;
 
-    OuterPositionCS = vec3(ModelView * vec4(VertexPosition*1.01, 1.0));
-    InnerPositionCS = vec3(ModelView * vec4(VertexPosition,     1.0));
+    //OuterPositionCS = vec3(ModelView * vec4(VertexPosition*1.01, 1.0));
+    //InnerPositionCS = vec3(ModelView * vec4(VertexPosition,     1.0));
 
-    LightDirectionCS  = viewRotation * LightDirectionWS;
-    CameraDirectionCS = normalize(InnerPositionCS);
+    //LightDirectionCS  = viewRotation * LightDirectionWS;
+    //CameraDirectionCS = normalize(InnerPositionCS);
 
     CalcLight();
 }

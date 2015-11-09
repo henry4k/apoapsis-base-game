@@ -17,7 +17,7 @@ local cloudTexture = Texture:load('2d', 'base-game/Planet/Clouds.png', {'filter'
 local Planet = class('base-game/Planet')
 
 function Planet:initialize( modelWorld )
-    self.model = modelWorld:createModel('background')
+    self.model = modelWorld:createModel()
     self.model:setMesh(planetMesh)
     self.model:setProgramFamily('planet')
     self.model:setTexture(0, planetSurfaceTexture)
@@ -46,6 +46,10 @@ function Planet:setTransformation( transformation )
     self:_updateTransformation(0)
 end
 
+local planetRadPerSecond = (2*math.pi) / (24*60*60)
+local stationRadPerSecond = (2*math.pi) / (93*60)
+local radPerSecond = planetRadPerSecond + stationRadPerSecond
+
 function Planet:_updateTransformation( timeDelta )
     local rotation = self.rotation
     local transformation = self.transformation:clone()
@@ -54,7 +58,7 @@ function Planet:_updateTransformation( timeDelta )
     self.model:setTransformation(transformation)
     self.cloudModel:setTransformation(transformation)
 
-    self.rotation = rotation + math.rad(5*timeDelta)
+    self.rotation = rotation - timeDelta*radPerSecond
 end
 
 return Planet

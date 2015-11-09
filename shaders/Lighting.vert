@@ -12,7 +12,7 @@ varying vec3 LightDirectionTS;
 varying vec3 HalfWayDirectionTS;
 varying vec3 CameraDirectionTS;
 
-const vec3 LightDirectionWS = -normalize(vec3(-1, 0, 0));
+const vec3 LightDirectionWS = -normalize(vec3(0, 0, 1));
 
 void CalcLight()
 {

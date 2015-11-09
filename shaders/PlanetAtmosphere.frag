@@ -5,10 +5,10 @@ uniform sampler2D CloudSampler;
 
 varying vec2 TexCoord;
 
-varying vec3 LightDirectionCS;
-varying vec3 CameraDirectionCS;
-varying vec3 OuterPositionCS;
-varying vec3 InnerPositionCS;
+//varying vec3 LightDirectionCS;
+//varying vec3 CameraDirectionCS;
+//varying vec3 OuterPositionCS;
+//varying vec3 InnerPositionCS;
 
 const float CloudAmount     = 1.0;
 const float TransitionWidth = 0.2;

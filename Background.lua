@@ -7,19 +7,19 @@ local Planet = require 'base-game/Planet/init'
 local Background = {}
 
 function Background.setup( renderTarget )
-    local backgroundCamera     = renderTarget:getCameraByName('world')
+    local backgroundCamera     = renderTarget:getCameraByName('background')
     local backgroundModelWorld = backgroundCamera:getModelWorld()
 
+    backgroundCamera:setNearAndFarPlanes(10, 100000)
+
     local skybox = Skybox(backgroundModelWorld)
-    --skybox.model:setTransformation(Mat4():scale(99999*1000))
-    skybox.model:setTransformation(Mat4():scale(50))
+    skybox.model:setTransformation(Mat4():scale(90000))
 
     local planet = Planet(backgroundModelWorld)
-    local planetDiameter = 1 -- 12756 * 1000
-    local meterAboveSurface = 1 -- 400 * 1000
-    local planetTransformation = Mat4():translate(Vec(0,0,planetDiameter+meterAboveSurface))
-                                       :scale(planetDiameter*2)
-                                       --:rotate(math.rad(90), Vec(1,0,0))
+    local planetDiameter = 12756
+    local meterAboveSurface = 400
+    local planetTransformation = Mat4():translate(Vec(0,0,(planetDiameter/2)+meterAboveSurface))
+                                       :scale(planetDiameter)
     planet:setTransformation(planetTransformation)
 end
 

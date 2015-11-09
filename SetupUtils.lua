@@ -35,7 +35,7 @@ function SetupUtils.setupRenderTarget( renderTarget )
 
     local defaultRT = require 'core/graphics/DefaultRenderTarget'
     defaultRT:setCamera(0, 'foreground', foregroundCamera)
-    defaultRT:setCamera(2,      'world',      worldCamera)
+    defaultRT:setCamera(2,      'world',      worldCamera) -- TODO
     defaultRT:setCamera(1, 'background', backgroundCamera)
     defaultRT:setShaderProgramSet(DefaultShaderProgramSet)
 end
