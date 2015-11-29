@@ -17,7 +17,7 @@ function Background.setup( renderTarget )
 
     local planet = Planet(backgroundModelWorld)
     local planetDiameter = 12756
-    local meterAboveSurface = 400
+    local meterAboveSurface = 1200
     local planetTransformation = Mat4():translate(Vec(0,0,(planetDiameter/2)+meterAboveSurface))
                                        :scale(planetDiameter)
     planet:setTransformation(planetTransformation)

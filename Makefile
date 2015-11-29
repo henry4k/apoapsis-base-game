@@ -16,6 +16,10 @@ GENERATED_CONTENTS += Planet/Surface.png
 Planet/Surface.png: Planet/Height.png
 	$(BUILD_TOOLS)/gen-planet-surface $^ $@
 
+GENERATED_CONTENTS += voxel/ScaffoldStructure/Normal.png
+voxel/ScaffoldStructure/Normal.png: voxel/ScaffoldStructure/Height.png
+	$(BUILD_TOOLS)/gen-normalmap $^ $@
+
 GENERATED        += $(GENERATED_CONTENTS)
 ARCHIVE_CONTENTS += $(GENERATED_CONTENTS)
 
