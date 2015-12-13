@@ -11,9 +11,9 @@ local SingleVoxelStructure = require 'core/voxel/SingleVoxelStructure'
 local sideMeshBuffer   = MeshBuffer:load('base-game/voxel/ScaffoldStructure/Scene.json', 'Side')
 local centerMeshBuffer = MeshBuffer:load('base-game/voxel/ScaffoldStructure/Scene.json', 'Center')
 local plateMeshBuffer  = MeshBuffer:load('base-game/voxel/ScaffoldStructure/Scene.json', 'Plate')
-local albedoTexture   = Texture:load('2d', 'base-game/voxel/ScaffoldStructure/Albedo.png')
-local specularTexture = Texture:load('2d', 'base-game/voxel/ScaffoldStructure/Specular.png')
-local normalTexture   = Texture:load('2d', 'base-game/voxel/ScaffoldStructure/Normal.png')
+local albedoTexture   = Texture:load{fileName='base-game/voxel/ScaffoldStructure/Albedo.png'}
+local specularTexture = Texture:load{fileName='base-game/voxel/ScaffoldStructure/Specular.png'}
+local normalTexture   = Texture:load{fileName='base-game/voxel/ScaffoldStructure/Normal.png'}
 
 
 local ScaffoldStructure = class('base-game/voxel/ScaffoldStructure', SingleVoxelStructure)

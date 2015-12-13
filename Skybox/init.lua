@@ -4,7 +4,7 @@ local Texture = require 'core/graphics/Texture'
 
 
 local skyboxMesh = Mesh:load('base-game/Skybox/Scene.json', 'Skybox')
-local skyboxDiffuseTexture = Texture:load('cube', 'base-game/Skybox/%s.png')
+local skyboxDiffuseTexture = Texture:load{target='cube', fileName='base-game/Skybox/%s.png'}
 
 
 local Skybox = class('example/Skybox')
