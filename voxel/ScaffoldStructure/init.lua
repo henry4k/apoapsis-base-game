@@ -8,15 +8,15 @@ local BlockVoxelMesh = require 'core/voxel/BlockVoxelMesh'
 local SingleVoxelStructure = require 'core/voxel/SingleVoxelStructure'
 
 
-local sideMeshBuffer   = MeshBuffer:load('base-game/voxel/ScaffoldStructure/Scene.json', 'Side')
-local centerMeshBuffer = MeshBuffer:load('base-game/voxel/ScaffoldStructure/Scene.json', 'Center')
-local plateMeshBuffer  = MeshBuffer:load('base-game/voxel/ScaffoldStructure/Scene.json', 'Plate')
-local albedoTexture   = Texture:load{fileName='base-game/voxel/ScaffoldStructure/Albedo.png'}
-local specularTexture = Texture:load{fileName='base-game/voxel/ScaffoldStructure/Specular.png'}
-local normalTexture   = Texture:load{fileName='base-game/voxel/ScaffoldStructure/Normal.png'}
+local sideMeshBuffer   = MeshBuffer:load(here('Scene.json'), 'Side')
+local centerMeshBuffer = MeshBuffer:load(here('Scene.json'), 'Center')
+local plateMeshBuffer  = MeshBuffer:load(here('Scene.json'), 'Plate')
+local albedoTexture   = Texture:load{fileName=here('Albedo.png')}
+local specularTexture = Texture:load{fileName=here('Specular.png')}
+local normalTexture   = Texture:load{fileName=here('Normal.png')}
 
 
-local ScaffoldStructure = class('base-game/voxel/ScaffoldStructure', SingleVoxelStructure)
+local ScaffoldStructure = class(here(), SingleVoxelStructure)
 ScaffoldStructure:register()
 
 local voxelAccessor = VoxelAccessor(SingleVoxelStructure.voxelAccessor)
@@ -58,29 +58,20 @@ function ScaffoldStructure.static:setupMeshChunkGenerator( generator )
     generator:addVoxelMesh(voxelMesh)
 end
 
-function ScaffoldStructure:initialize( ... )
-    SingleVoxelStructure.initialize(self, ...)
-end
-
-function ScaffoldStructure:create( voxelCreator, isPlated )
+function ScaffoldStructure:create( isPlated )
     self.isPlated = isPlated
-
-    local voxel = Voxel()
-    ScaffoldStructure.voxelAccessor:write(voxel, 'id', ScaffoldStructure.id)
-    ScaffoldStructure.voxelAccessor:write(voxel, 'plated', self.isPlated)
-    voxelCreator:writeVoxel(self.origin, voxel)
 end
 
-function ScaffoldStructure:read( voxelReader )
-    local voxel = voxelReader:readVoxel(self.origin)
+function ScaffoldStructure:read()
+    local voxel = self:readVoxel(self.origin)
     self.isPlated = voxelAccessor:read(voxel, 'plated')
 end
 
-function ScaffoldStructure:write( voxelWriter )
+function ScaffoldStructure:write()
     local voxel = Voxel()
-    ScaffoldStructure.voxelAccessor:write(voxel, 'id', ScaffoldStructure.id)
-    ScaffoldStructure.voxelAccessor:write(voxel, 'plated', self.isPlated)
-    voxelWriter:write(self.origin, voxel)
+    voxelAccessor:write(voxel, 'id', ScaffoldStructure.id)
+    voxelAccessor:write(voxel, 'plated', self.isPlated)
+    self:writeVoxel(self.origin, voxel)
 end
 
 
