@@ -34,8 +34,9 @@ function ScaffoldStructure.static:setupMeshChunkGenerator( generator )
     material:setUniform('NormalSampler',   2, 'int')
 
     local voxelMesh = BlockVoxelMesh{ material = material,
+                                      voxelAccessor = voxelAccessor,
                                       isTransparent = false }
-    voxelMesh:addBitCondition(0, 10, ScaffoldStructure.id)
+    voxelMesh:addBitCondition('id', self.id)
     voxelMesh:setMeshBuffer('center', centerMeshBuffer)
     voxelMesh:setMeshBuffer('+x', sideMeshBuffer)
     voxelMesh:setMeshBuffer('-x', sideMeshBuffer)
@@ -46,9 +47,10 @@ function ScaffoldStructure.static:setupMeshChunkGenerator( generator )
     generator:addVoxelMesh(voxelMesh)
 
     voxelMesh = BlockVoxelMesh{ material = material,
+                                voxelAccessor = voxelAccessor,
                                 isTransparent = false }
-    voxelMesh:addBitCondition(0, 10, ScaffoldStructure.id)
-    voxelMesh:addBitCondition(10, 1, 1)
+    voxelMesh:addBitCondition('id', self.id)
+    voxelMesh:addBitCondition('plated', 1)
     voxelMesh:setMeshBuffer('+x', plateMeshBuffer)
     voxelMesh:setMeshBuffer('-x', plateMeshBuffer)
     voxelMesh:setMeshBuffer('+y', plateMeshBuffer)
