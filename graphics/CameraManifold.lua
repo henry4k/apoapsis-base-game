@@ -49,7 +49,7 @@ end
 
 function CameraManifold:setViewTransformation( matrix )
     self.worldCamera:setViewTransformation(matrix)
-    self.backgroundCamera:setViewTransformation(matrix:toRotationMatrix())
+    self.backgroundCamera:setViewTransformation(matrix:clipTranslation())
 end
 
 function CameraManifold:setFieldOfView( fov )
