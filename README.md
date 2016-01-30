@@ -8,7 +8,7 @@ This package contains assets and scripts, which provide the basic game content.
 
 ## Dependencies
 
-- [apoapsis-build-tools](https://github.com/henry4k/apoapsis-build-tools)
+- [konstrukt-build-tools](https://github.com/henry4k/konstrukt-build-tools)
 
 And obviously you need the Apoapsis executable and the core package.
 
