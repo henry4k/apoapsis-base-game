@@ -7,7 +7,7 @@ local Texture = require 'core/graphics/Texture'
 
 --local lightningMesh = Mesh:load('base-game/Planet/Scene.json', 'Icosphere')
 local lightningMesh = Mesh:load('base-game/Planet/Scene.json', 'LightningParticleDummy')
-local cloudTexture = Texture:load('2d', 'base-game/Planet/Surface.png', {'filter'})
+local cloudTexture = Texture:load{fileName='base-game/Planet/Surface.png'}
 
 
 local Lightning = class('base-game/Planet/Lightning')
