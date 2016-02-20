@@ -3,9 +3,7 @@ local Material       = require 'core/graphics/GraphicalMaterial'
 local MeshBuffer     = require 'core/graphics/MeshBuffer'
 local Texture        = require 'core/graphics/Texture'
 local Voxel          = require 'core/voxel/Voxel'
-local VoxelAccessor  = require 'core/voxel/VoxelAccessor'
 local BlockVoxelMesh = require 'core/voxel/BlockVoxelMesh'
-local SingleVoxelStructure = require 'core/voxel/SingleVoxelStructure'
 
 
 local sideMeshBuffer   = MeshBuffer:load(here('Scene.json'), 'Side')
@@ -16,14 +14,11 @@ local specularTexture = Texture:load{fileName=here('Specular.png')}
 local normalTexture   = Texture:load{fileName=here('Normal.png')}
 
 
-local ScaffoldStructure = class(here(), SingleVoxelStructure)
-ScaffoldStructure:register()
+local Scaffold = class(here(), Voxel)
+Scaffold:addAttribute('plated', 1)
+Scaffold:makeInstantiable()
 
-local voxelAccessor = VoxelAccessor(SingleVoxelStructure.voxelAccessor)
-voxelAccessor:addMask('plated', 1)
-ScaffoldStructure.static.voxelAccessor = voxelAccessor
-
-function ScaffoldStructure.static:setupMeshChunkGenerator( generator )
+function Scaffold.static:addVoxelMeshes( generator )
     local material = Material()
     material:setTexture(0, albedoTexture)
     material:setTexture(1, specularTexture)
@@ -34,9 +29,8 @@ function ScaffoldStructure.static:setupMeshChunkGenerator( generator )
     material:setUniform('NormalSampler',   2, 'int')
 
     local voxelMesh = BlockVoxelMesh{ material = material,
-                                      voxelAccessor = voxelAccessor,
+                                      voxelClass = self,
                                       isTransparent = false }
-    voxelMesh:addBitCondition('id', self.id)
     voxelMesh:setMeshBuffer('center', centerMeshBuffer)
     voxelMesh:setMeshBuffer('+x', sideMeshBuffer)
     voxelMesh:setMeshBuffer('-x', sideMeshBuffer)
@@ -47,10 +41,9 @@ function ScaffoldStructure.static:setupMeshChunkGenerator( generator )
     generator:addVoxelMesh(voxelMesh)
 
     voxelMesh = BlockVoxelMesh{ material = material,
-                                voxelAccessor = voxelAccessor,
+                                voxelClass = self,
                                 isTransparent = false }
-    voxelMesh:addBitCondition('id', self.id)
-    voxelMesh:addBitCondition('plated', 1)
+    voxelMesh:addAttributeCondition('plated', 1)
     voxelMesh:setMeshBuffer('+x', plateMeshBuffer)
     voxelMesh:setMeshBuffer('-x', plateMeshBuffer)
     voxelMesh:setMeshBuffer('+y', plateMeshBuffer)
@@ -60,21 +53,8 @@ function ScaffoldStructure.static:setupMeshChunkGenerator( generator )
     generator:addVoxelMesh(voxelMesh)
 end
 
-function ScaffoldStructure:create( isPlated )
-    self.isPlated = isPlated
+function Scaffold:setPlating( status )
+    self:setAttribute('plated', status)
 end
 
-function ScaffoldStructure:read()
-    local voxel = self:readVoxel(self.origin)
-    self.isPlated = voxelAccessor:read(voxel, 'plated')
-end
-
-function ScaffoldStructure:write()
-    local voxel = Voxel()
-    voxelAccessor:write(voxel, 'id', ScaffoldStructure.id)
-    voxelAccessor:write(voxel, 'plated', self.isPlated)
-    self:writeVoxel(self.origin, voxel)
-end
-
-
-return ScaffoldStructure
+return Scaffold
