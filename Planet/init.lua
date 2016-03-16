@@ -7,9 +7,9 @@ local Texture = require 'core/graphics/Texture'
 
 
 local planetMesh = Mesh:load('base-game/Planet/Scene.json', 'Icosphere')
-local planetSurfaceTexture  = Texture:load{fileName='base-game/Planet/Surface.png'}
-local planetAlbedoTexture   = Texture:load{fileName='base-game/Planet/Albedo.png',   wrapMode='clamp'}
-local planetSpecularTexture = Texture:load{fileName='base-game/Planet/Specular.png', wrapMode='clamp'}
+local planetSurfaceTexture  = Texture:load{fileName='base-game/Planet/Surface.png',  colorSpace='srgb'}
+local planetAlbedoTexture   = Texture:load{fileName='base-game/Planet/Albedo.png',   colorSpace='srgb', wrapMode='clamp'}
+local planetSpecularTexture = Texture:load{fileName='base-game/Planet/Specular.png', colorSpace='srgb', wrapMode='clamp'}
 
 local cloudTexture = Texture:load{fileName='base-game/Planet/Clouds.png'}
 

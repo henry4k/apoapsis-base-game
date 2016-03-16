@@ -9,8 +9,8 @@ local BlockVoxelMesh = require 'core/voxel/BlockVoxelMesh'
 local sideMeshBuffer   = MeshBuffer:load(here('Scene.json'), 'Side')
 local centerMeshBuffer = MeshBuffer:load(here('Scene.json'), 'Center')
 local plateMeshBuffer  = MeshBuffer:load(here('Scene.json'), 'Plate')
-local albedoTexture   = Texture:load{fileName=here('Albedo.png')}
-local specularTexture = Texture:load{fileName=here('Specular.png')}
+local albedoTexture   = Texture:load{fileName=here('Albedo.png'),   colorSpace='srgb'}
+local specularTexture = Texture:load{fileName=here('Specular.png'), colorSpace='srgb'}
 local normalTexture   = Texture:load{fileName=here('Normal.png')}
 
 
