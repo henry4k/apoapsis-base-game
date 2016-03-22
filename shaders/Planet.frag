@@ -1,4 +1,4 @@
-#version 150
+#version 130
 
 vec3 UnpackDUDVNormal( vec2 dudv ); // from Lighting.frag
 vec3 CalcLightColor( vec3 albedo, vec3 specular, vec3 normalTS ); // from Lighting.frag
@@ -12,16 +12,16 @@ in vec2 TexCoord;
 
 void main()
 {
-    vec3 surfaceTexel = texture(SurfaceSampler, TexCoord).rgb;
+    vec3 surfaceTexel = texture2D(SurfaceSampler, TexCoord).rgb;
     vec2 dudv = surfaceTexel.gb;
     float x = surfaceTexel.r;
     float y = abs(TexCoord.y * 2 - 1); // Gets one at the poles and zero at the equator.
     vec2 xy = vec2(x, 1-y);
 
-    vec3 albedo   = texture(AlbedoSampler,   xy).rgb;
-    vec3 specular = texture(SpecularSampler, xy).rgb;
+    vec3 albedo   = texture2D(AlbedoSampler,   xy).rgb;
+    vec3 specular = texture2D(SpecularSampler, xy).rgb;
 
-    float cloudDensity = texture(CloudSampler, TexCoord).r;
+    float cloudDensity = texture2D(CloudSampler, TexCoord).r;
 
     gl_FragColor.rgb = CalcLightColor(albedo,
                                       specular,

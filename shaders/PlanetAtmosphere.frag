@@ -1,4 +1,4 @@
-#version 150
+#version 130
 
 vec3 CalcLightColor( vec3 albedo, vec3 specular, vec3 normalTS ); // from Lighting.frag
 
@@ -19,7 +19,7 @@ const vec3 CloudSpecular = vec3(.2,.2,.28);
 
 void main()
 {
-    float density = texture(CloudSampler, TexCoord).r;
+    float density = texture2D(CloudSampler, TexCoord).r;
 
     vec3 lightColor = CalcLightColor(CloudAlbedo,
                                      CloudSpecular,

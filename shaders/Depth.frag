@@ -1,4 +1,4 @@
-#version 150
+#version 130
 
 in vec2 TexCoord;
 
@@ -7,7 +7,7 @@ uniform sampler2D DiffuseSampler;
 
 void main()
 {
-    float alpha = texture(DiffuseSampler, TexCoord).a;
+    float alpha = texture2D(DiffuseSampler, TexCoord).a;
     if(alpha > AlphaThreshold)
         discard;
     gl_FragDepth = gl_FragCoord.z;
