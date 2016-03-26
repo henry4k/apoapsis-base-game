@@ -1,16 +1,16 @@
-#version 130
+#version 120
 
 uniform mat4 View;
 uniform mat4 ModelView;
 
-in vec3 VertexPosition;
-in vec3 VertexNormal;
-in vec3 VertexTangent;
-in vec3 VertexBitangent;
+attribute vec3 VertexPosition;
+attribute vec3 VertexNormal;
+attribute vec3 VertexTangent;
+attribute vec3 VertexBitangent;
 
-out vec3 LightDirectionTS;
-out vec3 HalfWayDirectionTS;
-out vec3 CameraDirectionTS;
+varying vec3 LightDirectionTS;
+varying vec3 HalfWayDirectionTS;
+varying vec3 CameraDirectionTS;
 
 const vec3 LightDirectionWS = -normalize(vec3(-0.6, 0, 1));
 

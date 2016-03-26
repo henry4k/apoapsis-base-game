@@ -1,6 +1,6 @@
-#version 130
+#version 120
 
-in vec2 TexCoord;
+varying vec2 TexCoord;
 
 uniform float AlphaThreshold;
 uniform sampler2D DiffuseSampler;

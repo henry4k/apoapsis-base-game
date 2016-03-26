@@ -1,4 +1,4 @@
-#version 130
+#version 120
 
 vec3 UnpackDUDVNormal( vec2 dudv ); // from Lighting.frag
 vec3 CalcLightColor( vec3 albedo, vec3 specular, vec3 normalTS ); // from Lighting.frag
@@ -7,7 +7,7 @@ uniform sampler2D AlbedoSampler;
 uniform sampler2D SpecularSampler;
 uniform sampler2D NormalSampler;
 
-in vec2 TexCoord;
+varying vec2 TexCoord;
 
 void main()
 {

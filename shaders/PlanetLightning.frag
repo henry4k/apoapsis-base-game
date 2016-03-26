@@ -1,9 +1,9 @@
-#version 130
+#version 120
 
 uniform sampler2D CloudSampler;
 
-//in vec2 TexCoord;
-in vec3 Normal;
+//varying vec2 TexCoord;
+varying vec3 Normal;
 
 vec2 GenSphereTexCoords( vec3 normal )
 {

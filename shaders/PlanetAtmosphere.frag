@@ -1,10 +1,10 @@
-#version 130
+#version 120
 
 vec3 CalcLightColor( vec3 albedo, vec3 specular, vec3 normalTS ); // from Lighting.frag
 
 uniform sampler2D CloudSampler;
 
-in vec2 TexCoord;
+varying vec2 TexCoord;
 
 //varying vec3 LightDirectionCS;
 //varying vec3 CameraDirectionCS;

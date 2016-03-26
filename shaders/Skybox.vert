@@ -1,8 +1,8 @@
-#version 130
+#version 120
 
-in vec3 VertexPosition;
+attribute vec3 VertexPosition;
 
-out vec3 TexCoord;
+varying vec3 TexCoord;
 
 uniform mat4 ModelViewProjection;
 

@@ -1,8 +1,8 @@
-#version 130
+#version 120
 
-in vec3 LightDirectionTS;
-in vec3 HalfWayDirectionTS;
-in vec3 CameraDirectionTS;
+varying vec3 LightDirectionTS;
+varying vec3 HalfWayDirectionTS;
+varying vec3 CameraDirectionTS;
 
 const vec3 LightAmbientColor  = vec3(0.1, 0.1, 0.1);
 const vec3 LightDiffuseColor  = vec3(1, 1, 1) - LightAmbientColor;

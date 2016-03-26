@@ -1,11 +1,11 @@
-#version 130
+#version 120
 
 uniform mat4 ModelViewProjection;
 
-in vec3 VertexPosition;
+attribute vec3 VertexPosition;
 
-//out vec2 TexCoord;
-out vec3 Normal;
+//varying vec2 TexCoord;
+varying vec3 Normal;
 
 void main()
 {
