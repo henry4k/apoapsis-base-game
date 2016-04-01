@@ -1,4 +1,4 @@
-#version 120
+#version 150
 
 void CalcLight(); // from Lighting.vert
 
@@ -6,15 +6,15 @@ uniform mat4 View;
 uniform mat4 ModelView;
 uniform mat4 ModelViewProjection;
 
-attribute vec3 VertexPosition;
-attribute vec2 VertexTexCoord;
+in vec3 VertexPosition;
+in vec2 VertexTexCoord;
 
-varying vec2 TexCoord;
-varying vec3 NormalWS;
-//varying vec3 LightDirectionCS;
-//varying vec3 CameraDirectionCS;
-//varying vec3 OuterPositionCS;
-//varying vec3 InnerPositionCS;
+out vec2 TexCoord;
+out vec3 NormalWS;
+//out vec3 LightDirectionCS;
+//out vec3 CameraDirectionCS;
+//out vec3 OuterPositionCS;
+//out vec3 InnerPositionCS;
 
 void main()
 {

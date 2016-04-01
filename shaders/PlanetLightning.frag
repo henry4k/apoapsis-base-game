@@ -1,9 +1,11 @@
-#version 120
+#version 150
 
 uniform sampler2D CloudSampler;
 
-//varying vec2 TexCoord;
-varying vec3 Normal;
+//in vec2 TexCoord;
+in vec3 Normal;
+
+out vec4 FragmentColor;
 
 vec2 GenSphereTexCoords( vec3 normal )
 {
@@ -28,6 +30,6 @@ vec2 GenSphereTexCoords( vec3 normal )
 void main()
 {
     vec2 TexCoord = GenSphereTexCoords(normalize(Normal));
-    vec4 cloudTexel = texture2D(CloudSampler, TexCoord).rgba;
-    gl_FragColor = vec4(cloudTexel.bbb, 1.0);
+    vec4 cloudTexel = texture(CloudSampler, TexCoord).rgba;
+    FragmentColor = vec4(cloudTexel.bbb, 1.0);
 }

@@ -1,15 +1,17 @@
-#version 120
+#version 150
 
 vec3 CalcLightColor( vec3 albedo, vec3 specular, vec3 normalTS ); // from Lighting.frag
 
 uniform sampler2D CloudSampler;
 
-varying vec2 TexCoord;
+in vec2 TexCoord;
 
-//varying vec3 LightDirectionCS;
-//varying vec3 CameraDirectionCS;
-//varying vec3 OuterPositionCS;
-//varying vec3 InnerPositionCS;
+out vec4 FragmentColor;
+
+//in vec3 LightDirectionCS;
+//in vec3 CameraDirectionCS;
+//in vec3 OuterPositionCS;
+//in vec3 InnerPositionCS;
 
 const float CloudAmount     = 1.0;
 const float TransitionWidth = 0.2;
@@ -19,7 +21,7 @@ const vec3 CloudSpecular = vec3(.2,.2,.28);
 
 void main()
 {
-    float density = texture2D(CloudSampler, TexCoord).r;
+    float density = texture(CloudSampler, TexCoord).r;
 
     vec3 lightColor = CalcLightColor(CloudAlbedo,
                                      CloudSpecular,
@@ -29,6 +31,6 @@ void main()
     float end = max(start+TransitionWidth, 1.0);
     float alpha = smoothstep(start, end, density);
 
-    gl_FragColor.rgb = lightColor * alpha;
-    gl_FragColor.a = alpha;
+    FragmentColor.rgb = lightColor * alpha;
+    FragmentColor.a = alpha;
 }
