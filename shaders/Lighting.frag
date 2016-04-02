@@ -24,10 +24,9 @@ vec3 CalcLightColor( vec3 albedo, vec3 specular, vec3 normalTS )
     //  - Looking elsewhere -> < 1
     cosAlpha = clamp(cosAlpha, 0,1);
 
-    vec3 r = albedo * (LightAmbientColor +
-                       LightDiffuseColor * lamberFactor) +
-             specular * LightSpecularColor * pow(cosAlpha, 5);
-    return pow(r, vec3(1,1,1)*1.0/2.2);
+    return albedo * (LightAmbientColor +
+                     LightDiffuseColor * lamberFactor) +
+           specular * LightSpecularColor * pow(cosAlpha, 5);
 }
 
 vec3 UnpackDUDVNormal( vec2 dudv )
