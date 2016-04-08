@@ -11,7 +11,7 @@ local Vec   = require 'core/Vector'
 local Mat4  = require 'core/Matrix4'
 local Quat  = require 'core/Quaternion'
 local Controllable        = require 'core/Controllable'
-local WorldObject         = require 'core/world/WorldObject'
+local FreeEntity          = require 'core/world/FreeEntity'
 local CameraManifold      = require 'base-game/graphics/CameraManifold'
 local EgoCameraController = require 'base-game/EgoCameraController'
 
@@ -20,7 +20,7 @@ local DefaultFoV = math.rad(80)
 local ZoomedFoV  = math.rad(40)
 
 
-local Actor = class('base-game/world/Actor', WorldObject)
+local Actor = class('base-game/world/Actor', FreeEntity)
 Actor:include(Controllable)
 
 
@@ -29,7 +29,7 @@ Actor:include(Controllable)
 -- @param[type=core.graphics.RenderTarget] renderTarget
 --
 function Actor:initialize( renderTarget )
-    WorldObject.initialize(self)
+    FreeEntity.initialize(self)
     self:initializeControllable()
 
     self.cameraManifold = CameraManifold(renderTarget)
@@ -45,7 +45,7 @@ end
 function Actor:destroy()
     self.cameraManifold:destroy()
     self:destroyControllable()
-    WorldObject.destroy(self)
+    FreeEntity.destroy(self)
 end
 
 local center  = Vec(0,0,0)

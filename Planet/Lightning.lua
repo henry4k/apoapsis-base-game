@@ -16,8 +16,7 @@ function Lightning:initialize( modelWorld )
     self.model = modelWorld:createModel('background')
     self.model:setMesh(lightningMesh)
     self.model:setProgramFamily('planet-lightning')
-    self.model:setTexture(0, cloudTexture)
-    self.model:setUniform('CloudSampler', 0, 'int')
+    self.model.shaderVariables:set('CloudSampler', cloudTexture)
     self:setTransformation(Mat4())
 end
 

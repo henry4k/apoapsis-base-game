@@ -20,13 +20,10 @@ Scaffold:makeInstantiable()
 
 function Scaffold.static:addVoxelMeshes( generator )
     local material = Material()
-    material:setTexture(0, albedoTexture)
-    material:setTexture(1, specularTexture)
-    material:setTexture(2, normalTexture)
     material:setProgramFamily('simple')
-    material:setUniform('AlbedoSampler',   0, 'int')
-    material:setUniform('SpecularSampler', 1, 'int')
-    material:setUniform('NormalSampler',   2, 'int')
+    material.shaderVariables.AlbedoSampler   = albedoTexture
+    material.shaderVariables.SpecularSampler = specularTexture
+    material.shaderVariables.NormalSampler   = normalTexture
 
     local voxelMesh = BlockVoxelMesh{ material = material,
                                       voxelClass = self,

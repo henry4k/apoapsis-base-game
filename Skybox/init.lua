@@ -13,8 +13,7 @@ function Skybox:initialize( modelWorld )
     self.model = modelWorld:createModel('background')
     self.model:setMesh(skyboxMesh)
     self.model:setProgramFamily('skybox')
-    self.model:setTexture(0, skyboxDiffuseTexture)
-    self.model:setUniform('DiffuseSampler', 0, 'int')
+    self.model.shaderVariables:set('Texture', skyboxDiffuseTexture)
 end
 
 return Skybox
