@@ -1,28 +1,35 @@
 include config.mk
+include $(BUILD_TOOLS)/tools.mk
 
 NAME = base-game
 
 ARCHIVE_CONTENTS += README.md
 ARCHIVE_CONTENTS += LICENSE
 ARCHIVE_CONTENTS += meta.json
-ARCHIVE_CONTENTS += $(wildcard *.lua **/*.lua)
-ARCHIVE_CONTENTS += $(wildcard *.vert **/*.vert)
-ARCHIVE_CONTENTS += $(wildcard *.frag **/*.frag)
+ARCHIVE_CONTENTS += $(call rwildcard,'*.lua')
+ARCHIVE_CONTENTS += $(call rwildcard,'*.vert')
+ARCHIVE_CONTENTS += $(call rwildcard,'*.frag')
 
-XCF_FILES = $(shell find . -name '*.xcf')
+XCF_FILES = $(call rwildcard,'*.xcf')
 GENERATED_CONTENTS += $(patsubst %.xcf,%.png,$(XCF_FILES))
 
-BLEND_FILES = $(shell find . -name '*.blend')
+BLEND_FILES = $(call rwildcard,'*.blend')
 GENERATED_CONTENTS += $(patsubst %.blend,%.json,$(BLEND_FILES))
 
+ARCHIVE_CONTENTS += $(wildcard Skybox/*.png)
+
+ARCHIVE_CONTENTS += Planet/Clouds.png
 GENERATED_CONTENTS += Planet/Surface.png
 Planet/Surface.png: Planet/Height.png
 	$(BUILD_TOOLS)/gen-planet-surface $^ $@
 
+ARCHIVE_CONTENTS += voxel/Scaffold/Albedo.png
 GENERATED_CONTENTS += voxel/Scaffold/Normal.png
 voxel/Scaffold/Normal.png: voxel/Scaffold/Height.png
 	$(BUILD_TOOLS)/gen-normalmap $^ $@
 
+ARCHIVE_CONTENTS += voxel/FluidTank/Albedo.png
+ARCHIVE_CONTENTS += voxel/FluidTank/Specular.png
 GENERATED_CONTENTS += voxel/FluidTank/Normal.png
 voxel/FluidTank/Normal.png: voxel/FluidTank/Height.png
 	$(BUILD_TOOLS)/gen-normalmap $^ $@
