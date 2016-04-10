@@ -1,7 +1,7 @@
 Apoapsis Base Game Package
 ==========================
 
-A package for a game called [Apoapsis](https://github.com/henry4k/apoapsis).
+A package for an engine called [Konstrukt](https://github.com/henry4k/konstrukt).
 
 This package contains assets and scripts, which provide the basic game content.
 
@@ -9,8 +9,6 @@ This package contains assets and scripts, which provide the basic game content.
 ## Dependencies
 
 - [konstrukt-build-tools](https://github.com/henry4k/konstrukt-build-tools)
-
-And obviously you need the Apoapsis executable and the core package.
 
 
 ## Licence and copyright
