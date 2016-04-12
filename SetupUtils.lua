@@ -24,7 +24,12 @@ function SetupUtils.setupChunkManager( voxelVolume, modelWorld )
     return chunkManager
 end
 
-function SetupUtils.setupRenderTarget( renderTarget )
+function SetupUtils.setupRenderTarget( renderTarget,
+                                       shaderProgramSet,
+                                       lightWorldClass )
+
+    shaderProgramSet = shaderProgramSet or DefaultShaderProgramSet
+
     local foregroundModelWorld = ModelWorld()
     local worldModelWorld      = ModelWorld()
     local backgroundModelWorld = ModelWorld()
@@ -33,11 +38,18 @@ function SetupUtils.setupRenderTarget( renderTarget )
     local worldCamera      = PerspectiveCamera(worldModelWorld)
     local backgroundCamera = PerspectiveCamera(backgroundModelWorld)
 
+    local localLightWorld
+    local backgroundLightWorld
+    if lightWorldClass then
+        localLightWorld = lightWorldClass()
+        backgroundLightWorld = lightWorldClass()
+    end
+
     local defaultRT = require 'core/graphics/DefaultRenderTarget'
-    defaultRT:setCamera(0, 'foreground', foregroundCamera)
-    defaultRT:setCamera(2,      'world',      worldCamera) -- TODO
-    defaultRT:setCamera(1, 'background', backgroundCamera)
-    defaultRT:setShaderProgramSet(DefaultShaderProgramSet)
+    defaultRT:setCamera(0, 'foreground', foregroundCamera, localLightWorld)
+    defaultRT:setCamera(2,      'world',      worldCamera, localLightWorld)
+    defaultRT:setCamera(1, 'background', backgroundCamera, backgroundLightWorld)
+    defaultRT:setShaderProgramSet(shaderProgramSet)
 end
 
 return SetupUtils
