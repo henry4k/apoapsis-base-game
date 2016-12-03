@@ -1,3 +1,6 @@
 {
-   "type": "regular"
+    "name": "base-game",
+    "version": "0.0.0",
+    "description": "This package contains assets and scripts, which provide the basic game content.",
+    "type": "regular"
 }
